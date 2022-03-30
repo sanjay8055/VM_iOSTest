@@ -9,7 +9,7 @@ import Foundation
 
 protocol ViewModelProtocol {
     associatedtype modelType
-    func fetchList(_ completionHandler: @escaping(Result<Bool, Error>) -> Void)
+    func fetchList(endPoint: String ,_ completionHandler: @escaping(Result<Bool, Error>) -> Void)
     func parseJsonResponse(_ data: Data) throws -> [modelType]
 }
 
@@ -19,8 +19,8 @@ class RoomsViewModel: ViewModelProtocol {
     var roomsList:[Room] = []
     var networkManager = NetworkManager.shared
     
-    func fetchList(_ completionHandler: @escaping(Result<Bool, Error>) -> Void){
-        networkManager.makeRequest(Constants.APIBaseUrl + Constants.roomsUrlEndPoint) { data, error in
+    func fetchList(endPoint: String, _ completionHandler: @escaping(Result<Bool, Error>) -> Void){
+        networkManager.makeRequest(Constants.APIBaseUrl + endPoint) { data, error in
             if let data = data {
                 do {
                     let roomsList = try self.parseJsonResponse(data)

@@ -14,8 +14,8 @@ class ContactsViewModel: ViewModelProtocol {
     var networkManager = NetworkManager.shared
     var filteredContactsList:[Contact] = []
 
-    func fetchList(_ completionHandler: @escaping(Result<Bool, Error>) -> Void){
-        networkManager.makeRequest(Constants.APIBaseUrl + Constants.contactsUrlEndPoint) { data, error in
+    func fetchList(endPoint: String, _ completionHandler: @escaping(Result<Bool, Error>) -> Void){
+        networkManager.makeRequest(Constants.APIBaseUrl + endPoint) { data, error in
             if let data = data {
                 do {
                     let contactList = try self.parseJsonResponse(data)

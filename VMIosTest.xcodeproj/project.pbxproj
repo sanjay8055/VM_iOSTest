@@ -11,7 +11,7 @@
 		0DAE14B727F324B6000113EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE14B527F324B6000113EC /* Main.storyboard */; };
 		0DAE14B927F324B7000113EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE14B827F324B7000113EC /* Assets.xcassets */; };
 		0DAE14BC27F324B7000113EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE14BA27F324B7000113EC /* LaunchScreen.storyboard */; };
-		0DAE14C727F324B7000113EC /* VMIosTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14C627F324B7000113EC /* VMIosTestTests.swift */; };
+		0DAE14C727F324B7000113EC /* VMContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14C627F324B7000113EC /* VMContactsTests.swift */; };
 		0DAE14D127F324B7000113EC /* VMIosTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14D027F324B7000113EC /* VMIosTestUITests.swift */; };
 		0DAE14D327F324B7000113EC /* VMIosTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14D227F324B7000113EC /* VMIosTestUITestsLaunchTests.swift */; };
 		0DAE14E327F3252A000113EC /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14E227F3252A000113EC /* Contact.swift */; };
@@ -31,6 +31,7 @@
 		0DAE150727F35728000113EC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE150627F35728000113EC /* UIColorExtension.swift */; };
 		0DAE150927F366C9000113EC /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE150827F366C9000113EC /* ContactDetailsViewController.swift */; };
 		0DAE150B27F40D77000113EC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE150A27F40D77000113EC /* Reachability.swift */; };
+		0DAE150D27F436E3000113EC /* VMRoomsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE150C27F436E3000113EC /* VMRoomsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 		0DAE14BB27F324B7000113EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DAE14BD27F324B7000113EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DAE14C227F324B7000113EC /* VMIosTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VMIosTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DAE14C627F324B7000113EC /* VMIosTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMIosTestTests.swift; sourceTree = "<group>"; };
+		0DAE14C627F324B7000113EC /* VMContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMContactsTests.swift; sourceTree = "<group>"; };
 		0DAE14CC27F324B7000113EC /* VMIosTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VMIosTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAE14D027F324B7000113EC /* VMIosTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMIosTestUITests.swift; sourceTree = "<group>"; };
 		0DAE14D227F324B7000113EC /* VMIosTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMIosTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		0DAE150627F35728000113EC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0DAE150827F366C9000113EC /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		0DAE150A27F40D77000113EC /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0DAE150C27F436E3000113EC /* VMRoomsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMRoomsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +146,8 @@
 		0DAE14C527F324B7000113EC /* VMIosTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				0DAE14C627F324B7000113EC /* VMIosTestTests.swift */,
+				0DAE14C627F324B7000113EC /* VMContactsTests.swift */,
+				0DAE150C27F436E3000113EC /* VMRoomsTests.swift */,
 			);
 			path = VMIosTestTests;
 			sourceTree = "<group>";
@@ -384,7 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DAE14C727F324B7000113EC /* VMIosTestTests.swift in Sources */,
+				0DAE14C727F324B7000113EC /* VMContactsTests.swift in Sources */,
+				0DAE150D27F436E3000113EC /* VMRoomsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,13 +22,26 @@ class VMIosTestUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testAppFlow() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssertTrue(tabBar.exists)
+        tabBar.buttons["Contacts"].tap()
+        XCTAssertTrue(tabBar.buttons["Contacts"].exists)
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tablesQuery = app.tables
+        let element = tablesQuery.children(matching: .cell).element(boundBy: 1)
+        _ = element.waitForExistence(timeout: 2)
+        XCTAssertTrue(element.exists)
+        element.tap()
+        XCTAssertTrue(app.images["image"].exists)
+        XCTAssertTrue(app.staticTexts["Favourite color"].exists)
+        XCTAssertTrue (app.staticTexts["job title"].exists)
+        tabBar.buttons["Rooms"].tap()
+        
     }
 
     func testLaunchPerformance() throws {

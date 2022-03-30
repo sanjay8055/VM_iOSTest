@@ -37,7 +37,7 @@ class ContactsViewController: UIViewController {
 
     // MARK: Other methods
     func getContacts() {
-        contactsViewModel.fetchList { [weak self] result in
+        contactsViewModel.fetchList(endPoint: Constants.contactsUrlEndPoint, { [weak self] result in
             switch result {
             case .success:
                 print(self?.contactsViewModel.contactsList as Any)
@@ -47,7 +47,7 @@ class ContactsViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
+        })
     }
 }
 

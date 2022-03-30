@@ -26,7 +26,7 @@ class RoomsViewController: UIViewController {
 
     // MARK: Other methods
     func getRooms() {
-        roomsViewModel.fetchList { [weak self] result in
+        roomsViewModel.fetchList(endPoint: Constants.roomsUrlEndPoint, { [weak self] result in
             switch result {
             case .success:
                 print(self?.roomsViewModel.roomsList as Any)
@@ -36,7 +36,7 @@ class RoomsViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
+        })
     }
 }
 
