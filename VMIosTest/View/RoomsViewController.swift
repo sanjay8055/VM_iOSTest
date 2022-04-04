@@ -18,23 +18,32 @@ class RoomsViewController: UIViewController {
         super.viewDidLoad()
         roomsTableView.dataSource = self
         self.title = "Rooms"
-        getRooms()
         let appTheme = AppTheme.shared
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(hex: appTheme?.primaryColor ?? "")]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if roomsViewModel.roomsList.count == 0 {
+            getRooms() //try to fecth rooms list again
+        }
+    }
+    
     // MARK: Other methods
     func getRooms() {
         roomsViewModel.fetchList(endPoint: Constants.roomsUrlEndPoint, { [weak self] result in
             switch result {
             case .success:
-                print(self?.roomsViewModel.roomsList as Any)
+                debugPrint(self?.roomsViewModel.roomsList as Any)
                 DispatchQueue.main.async {
                     self?.roomsTableView.reloadData()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                showAlertWithCompletion(message: "No data found", okTitle: "OK", cancelTitle: nil) { okPressed in
+                    
+                }
+                debugPrint(error.localizedDescription)
             }
         })
     }

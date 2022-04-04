@@ -14,7 +14,11 @@ enum NetworkErrors: Error {
   case unknownError
 }
 
-final class NetworkManager {
+protocol NetworkOperationsProtocol {
+    func makeRequest(_ url: String, completionHandler: @escaping(_ data: Data?, _ error: Error?) -> Void)
+}
+
+final class NetworkManager: NetworkOperationsProtocol {
     static let shared = NetworkManager()
     
     private init() {
@@ -25,13 +29,8 @@ final class NetworkManager {
     func makeRequest(_ url: String, completionHandler: @escaping(_ data: Data?, _ error: Error?) -> Void) {
         if !Reachability.isConnectedToNetwork(){
             print("Internet Connection not Available!")
-            let alertController = UIAlertController(title: "No Internet Available", message: "", preferredStyle: UIAlertController.Style.alert)
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){(result:UIAlertAction) -> Void in
-                return
-            }
-            alertController.addAction(okAction)
-            if let rootVc = UIApplication.shared.keyWindow!.rootViewController {
-                rootVc.present(alertController, animated: true, completion: nil)
+            showAlertWithCompletion(message: "No Internet Available", okTitle: "OK", cancelTitle: nil) { okPressed in
+                
             }
             return
         }

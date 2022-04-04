@@ -10,8 +10,7 @@ import XCTest
 
 class VMContactsTests: XCTestCase {
 
-    var sut = ContactsViewModel()
-    var sut1 = RoomsViewModel()
+    var sut = ContactsViewModel(networkManager: MockNetworkManager())
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,7 +21,7 @@ class VMContactsTests: XCTestCase {
     }
 
     func testgetContacts() throws {
-        
+        sut.networkManager = MockNetworkManager()
         let expectation = expectation(description: "fetch contacts")
         sut.fetchList(endPoint: Constants.contactsUrlEndPoint, { result in
             switch result {
@@ -39,7 +38,7 @@ class VMContactsTests: XCTestCase {
     
     func testgetContactsFailure() throws {
         
-        let expectation = expectation(description: "fetch contacts")
+        //let expectation = expectation(description: "fetch contacts")
         sut.fetchList(endPoint: "test", { result in
             switch result {
             case .success:
@@ -47,9 +46,9 @@ class VMContactsTests: XCTestCase {
             case .failure(let error):
                 XCTAssertTrue(self.sut.contactsList.count == 0, error.localizedDescription)
             }
-            expectation.fulfill()
+            //expectation.fulfill()
         })
-        waitForExpectations(timeout: 2.0, handler: nil)
+        //waitForExpectations(timeout: 2.0, handler: nil)
         
     }
 
@@ -58,5 +57,21 @@ class VMContactsTests: XCTestCase {
             XCTAssertTrue(self.sut.filteredContactsList.count == 0)
         }
     }
+    
+    func testParseResponse() {
+        do {
+        _ = try sut.parseJsonResponse("{}/".data(using: .utf8)!)
+        } catch {
+            XCTAssertTrue((error as? NetworkErrors) == NetworkErrors.invalidResponse)
+        }
+    }
 
+}
+
+
+class MockNetworkManager: NetworkOperationsProtocol {
+    func makeRequest(_ url: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+        completionHandler(nil,nil)
+    }
+    
 }

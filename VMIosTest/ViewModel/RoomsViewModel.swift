@@ -17,7 +17,11 @@ class RoomsViewModel: ViewModelProtocol {
     
     typealias modelType = Room
     var roomsList:[Room] = []
-    var networkManager = NetworkManager.shared
+    var networkManager:NetworkOperationsProtocol
+    
+    init(networkManager: NetworkOperationsProtocol = NetworkManager.shared) {
+        self.networkManager = networkManager
+    }
     
     func fetchList(endPoint: String, _ completionHandler: @escaping(Result<Bool, Error>) -> Void){
         networkManager.makeRequest(Constants.APIBaseUrl + endPoint) { data, error in

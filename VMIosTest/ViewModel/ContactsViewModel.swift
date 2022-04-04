@@ -11,9 +11,13 @@ class ContactsViewModel: ViewModelProtocol {
     
     typealias modelType = Contact
     var contactsList:[Contact] = []
-    var networkManager = NetworkManager.shared
+    var networkManager: NetworkOperationsProtocol
     var filteredContactsList:[Contact] = []
 
+    init(networkManager: NetworkOperationsProtocol = NetworkManager.shared) {
+        self.networkManager = networkManager
+    }
+    
     func fetchList(endPoint: String, _ completionHandler: @escaping(Result<Bool, Error>) -> Void){
         networkManager.makeRequest(Constants.APIBaseUrl + endPoint) { data, error in
             if let data = data {

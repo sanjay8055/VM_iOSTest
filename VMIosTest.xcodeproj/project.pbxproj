@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D253C8227FB1F6F004A3970 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D253C8127FB1F6F004A3970 /* AlertHelper.swift */; };
 		0DAE14B027F324B6000113EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE14AF27F324B6000113EC /* AppDelegate.swift */; };
 		0DAE14B727F324B6000113EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE14B527F324B6000113EC /* Main.storyboard */; };
 		0DAE14B927F324B7000113EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE14B827F324B7000113EC /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D253C8127FB1F6F004A3970 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0DAE14AC27F324B6000113EC /* VMIosTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VMIosTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAE14AF27F324B6000113EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DAE14B627F324B6000113EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0DAE14F727F33CFB000113EC /* Extensions */,
+				0D253C8127FB1F6F004A3970 /* AlertHelper.swift */,
 				0DAE14E727F3261D000113EC /* Constants.swift */,
 				0DAE150A27F40D77000113EC /* Reachability.swift */,
 				0DAE14E927F326ED000113EC /* AppTheme.swift */,
@@ -369,6 +372,7 @@
 				0DAE14EA27F326ED000113EC /* AppTheme.swift in Sources */,
 				0DAE14E327F3252A000113EC /* Contact.swift in Sources */,
 				0DAE14B027F324B6000113EC /* AppDelegate.swift in Sources */,
+				0D253C8227FB1F6F004A3970 /* AlertHelper.swift in Sources */,
 				0DAE150B27F40D77000113EC /* Reachability.swift in Sources */,
 				0DAE150927F366C9000113EC /* ContactDetailsViewController.swift in Sources */,
 				0DAE150527F3551A000113EC /* HomeViewController.swift in Sources */,

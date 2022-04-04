@@ -19,7 +19,6 @@ class ContactsViewController: UIViewController {
         contactsTableView.dataSource = self
         contactsTableView.delegate = self
         self.title = "Contacts"
-        getContacts()
         cache.countLimit = 20
         let appTheme = AppTheme.shared
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(hex: appTheme?.primaryColor ?? "")]
@@ -27,6 +26,14 @@ class ContactsViewController: UIViewController {
         setupSearchBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if contactsViewModel.contactsList.count == 0 {
+            getContacts() //try to fecth contact again
+        }
+    }
+
+    // MARK: Other methods
     func setupSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -34,18 +41,19 @@ class ContactsViewController: UIViewController {
         searchController.searchBar.sizeToFit()
         self.contactsTableView.tableHeaderView = searchController.searchBar
     }
-
-    // MARK: Other methods
+    
     func getContacts() {
         contactsViewModel.fetchList(endPoint: Constants.contactsUrlEndPoint, { [weak self] result in
             switch result {
             case .success:
-                print(self?.contactsViewModel.contactsList as Any)
+                debugPrint(self?.contactsViewModel.contactsList as Any)
                 DispatchQueue.main.async {
                     self?.contactsTableView.reloadData()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
+                showAlertWithCompletion(message: "No data found", okTitle: "OK", cancelTitle: nil) { okPressed in
+                }
             }
         })
     }
@@ -77,7 +85,6 @@ extension ContactsViewController: UITableViewDelegate {
         guard let Vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoryBoradIdentifiers.contactDetailsViewControllerId) as? ContactDetailsViewController else { return }
         Vc.contactDetails = self.searchController.isActive ? contactsViewModel.filteredContactsList[indexPath.row] : contactsViewModel.contactsList[indexPath.row]
         self.navigationController?.pushViewController(Vc, animated: true)
-        //self.searchController.searchBar.resignFirstResponder()
         self.searchController.isActive = false
     }
 }
